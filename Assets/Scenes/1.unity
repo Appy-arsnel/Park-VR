@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7571,7 +7571,6 @@ GameObject:
   - component: {fileID: 911928638}
   - component: {fileID: 911928637}
   - component: {fileID: 911928636}
-  - component: {fileID: 911928635}
   m_Layer: 0
   m_Name: Fpp
   m_TagString: MainCamera
@@ -7579,18 +7578,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &911928635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911928634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &911928636
 AudioListener:
   m_ObjectHideFlags: 0
@@ -11410,8 +11397,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _mouseSensitivity: 1
-  _minCameraview: 100
-  _maxCameraview: 30
+  _minCameraview: -30
+  _maxCameraview: 50
+  _camera: {fileID: 911928637}
 --- !u!143 &1466055311
 CharacterController:
   m_ObjectHideFlags: 0
@@ -16325,7 +16313,6 @@ GameObject:
   - component: {fileID: 2124956433}
   - component: {fileID: 2124956436}
   - component: {fileID: 2124956435}
-  - component: {fileID: 2124956434}
   m_Layer: 0
   m_Name: 'Tpp '
   m_TagString: MainCamera
@@ -16347,18 +16334,6 @@ Transform:
   m_Father: {fileID: 253174303}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2124956434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124956432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &2124956435
 AudioListener:
   m_ObjectHideFlags: 0

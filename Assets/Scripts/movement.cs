@@ -7,7 +7,7 @@ public class movement : MonoBehaviour
     [SerializeField]private float _mouseSensitivity = 50f;
     [SerializeField]private float _minCameraview = -70f, _maxCameraview = 80f;
     private CharacterController _charController;
-    private Camera _camera;
+    public Camera _camera;
     private float xRotation = 0f;
 
     // Start is called before the first frame update
