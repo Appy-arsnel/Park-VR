@@ -18,8 +18,8 @@ public class DialogueManager : MonoBehaviour
 
     public Text npcName;
     public Text npcDialogueBox;
-
-    private int i = 0;
+    [HideInInspector]
+    public int i = 0;
 
     // Start is called before the first frame update
     void Start()
