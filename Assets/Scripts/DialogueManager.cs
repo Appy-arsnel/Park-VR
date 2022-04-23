@@ -20,6 +20,8 @@ public class DialogueManager : MonoBehaviour
 
     public Text npcName;
     public Text npcDialogueBox;
+
+    public BlendBetweenCameras blendBC;
     [HideInInspector]
     public int i = 0;
 
@@ -69,6 +71,10 @@ public class DialogueManager : MonoBehaviour
         {
             i++;
             npcDialogueBox.text = npc.dialogue[i];
+            blendBC.FPOVCamera = true;
+            Debug.Log(blendBC.FPOVCamera);
+            Debug.Log(isTalking);
+            Debug.Log(i);
         }
         else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1)
         {

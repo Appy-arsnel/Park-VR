@@ -11,10 +11,10 @@ public class movement : MonoBehaviour
     [SerializeField]private float _minCameraview = -70f, _maxCameraview = 80f;
     private CharacterController _charController;
     [SerializeField] private Camera _fppcamera;
-        [SerializeField] private Camera _tppcamera;
+        //[SerializeField] private Camera _tppcamera;
         private Camera _camera =null;
         bool istpp;
-          [SerializeField] private GameObject _tppc;
+          //[SerializeField] private GameObject _tppc;
                     [SerializeField] private GameObject _fppc;
 
     public bool canmove;
@@ -31,7 +31,7 @@ public class movement : MonoBehaviour
     {       canmove=true;
         _charController = GetComponent<CharacterController>();
         _fppc.SetActive(true);
-                _tppc.SetActive(false);
+                //_tppc.SetActive(false);
 
        _camera = _fppcamera;
 
@@ -100,15 +100,15 @@ public class movement : MonoBehaviour
         //float horizontal = Input.GetAxis("Horizontal");
             if(Input.GetKeyDown(KeyCode.C)){
             if(istpp==false){
-            _camera=_tppcamera;
+            //_camera=_tppcamera;
             _fppc.SetActive(false);
-                _tppc.SetActive(true);
+                //_tppc.SetActive(true);
             istpp=true;
         }
         else if(istpp==true){
             _camera=_fppcamera;
             _fppc.SetActive(true);
-                _tppc.SetActive(false);
+                //_tppc.SetActive(false);
             istpp=false;
         }
         
