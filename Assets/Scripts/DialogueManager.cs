@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject player;
     public GameObject dialogueUI;
 
+    public Raycast rc;
+
     public Text npcName;
     public Text npcDialogueBox;
     [HideInInspector]
@@ -27,36 +29,12 @@ public class DialogueManager : MonoBehaviour
         dialogueUI.SetActive(false);
     }
 
-    void OnMouseOver()
+    void Update()
     {
-        distance = Vector3.Distance(player.transform.position, this.transform.position);
-        if (distance <= 4f)
+        if (rc.isGuide)
         {
-            
-            //trigger dialogue
-            if (Input.GetKeyDown(KeyCode.E) && isTalking == false)
-            {
-                StartConversation();
-            }
-            else if (Input.GetKeyDown(KeyCode.E) && isTalking == true)
-            {
-                EndDialogue();
-            }
-
-            
-            if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i<npc.dialogue.Length-1)
-            {
-                i++;
-                npcDialogueBox.text = npc.dialogue[i];
-            }
-            else if(isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length-1)
-            {
-                EndDialogue();
-            }
-
-            
-
-        }
+            Convo();
+        }  
     }
 
     void StartConversation()
@@ -72,6 +50,30 @@ public class DialogueManager : MonoBehaviour
         isTalking = false;
         dialogueUI.SetActive(false);
         i = 0;
+    }
+
+    void Convo()
+    {
+        //trigger dialogue
+        if (Input.GetKeyDown(KeyCode.E) && isTalking == false)
+        {
+            StartConversation();
+        }
+        else if (Input.GetKeyDown(KeyCode.E) && isTalking == true)
+        {
+            EndDialogue();
+        }
+
+
+        if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i < npc.dialogue.Length - 1)
+        {
+            i++;
+            npcDialogueBox.text = npc.dialogue[i];
+        }
+        else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1)
+        {
+            EndDialogue();
+        }
     }
 
 }

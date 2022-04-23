@@ -11,24 +11,24 @@ public class BlendBetweenCameras : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            SwitchState();
-        }
+       
+        SwitchState();
+        
     }
 
     private void SwitchState()
     {
-        if (FPOVCamera && dm.i == 1)
+        if (dm.i == 1)
         {
             anim.Play("Grass");
-        } else if(FPOVCamera && dm.i == 2)
+            
+        } else if(dm.i == 2)
         {
             anim.Play("PlayGround");
         } else
         {
             anim.Play("FPOV");
         }
-        FPOVCamera = !FPOVCamera;
+        
     }
 }

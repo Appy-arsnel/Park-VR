@@ -3216,11 +3216,11 @@ MonoBehaviour:
     m_MinDuration: 0
   - m_FullHash: -327090315
     m_VirtualCamera: {fileID: 840013613}
-    m_ActivateAfter: 0
+    m_ActivateAfter: 1
     m_MinDuration: 0
   - m_FullHash: -1546895971
     m_VirtualCamera: {fileID: 2103304518}
-    m_ActivateAfter: 0
+    m_ActivateAfter: 1
     m_MinDuration: 0
   m_DefaultBlend:
     m_Style: 1
@@ -5557,7 +5557,7 @@ GameObject:
   - component: {fileID: 662429969}
   - component: {fileID: 662429968}
   - component: {fileID: 662429973}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NPC Guide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5674,6 +5674,7 @@ MonoBehaviour:
   npc: {fileID: 11400000, guid: abb48b5f88cb7cf40b17987d721cae3c, type: 2}
   player: {fileID: 1466055309}
   dialogueUI: {fileID: 1109635663}
+  rc: {fileID: 1466055317}
   npcName: {fileID: 748616052}
   npcDialogueBox: {fileID: 597007607}
   i: 0
@@ -12290,6 +12291,7 @@ GameObject:
   - component: {fileID: 1466055312}
   - component: {fileID: 1466055311}
   - component: {fileID: 1466055310}
+  - component: {fileID: 1466055317}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -12313,7 +12315,6 @@ MonoBehaviour:
   _mouseSensitivity: 1
   _minCameraview: -30
   _maxCameraview: 50
-  _camera: {fileID: 911928637}
 --- !u!143 &1466055311
 CharacterController:
   m_ObjectHideFlags: 0
@@ -12410,6 +12411,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1466055317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466055309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e803fdafa3c27488753bc4615a92b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGuide: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1497768489
 GameObject:
   m_ObjectHideFlags: 3
