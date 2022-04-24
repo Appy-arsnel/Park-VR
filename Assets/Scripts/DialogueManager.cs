@@ -19,7 +19,12 @@ public class DialogueManager : MonoBehaviour
     public Raycast rc;
 
     public Text npcName;
+        
     public Text npcDialogueBox;
+
+//npc animations
+     private Animator animator;
+     private bool is_waving;
 
     public BlendBetweenCameras blendBC;
     [HideInInspector]
@@ -29,6 +34,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         dialogueUI.SetActive(false);
+        animator= GetComponent<Animator>();
     }
 
     void Update()
@@ -53,17 +59,29 @@ public class DialogueManager : MonoBehaviour
         dialogueUI.SetActive(false);
         i = 0;
     }
+   IEnumerator waving_waiter()
+{     
+     animator.SetBool("iswaving",true);
+    yield return new WaitForSeconds(2);
+   animator.SetBool("iswaving",false);
+      
 
+           
+
+}
     void Convo()
     {
         //trigger dialogue
         if (Input.GetKeyDown(KeyCode.E) && isTalking == false)
         {
             StartConversation();
+          StartCoroutine(waving_waiter());
+        
         }
         else if (Input.GetKeyDown(KeyCode.E) && isTalking == true)
         {
             EndDialogue();
+           StartCoroutine(waving_waiter());
         }
 
 
@@ -77,6 +95,15 @@ public class DialogueManager : MonoBehaviour
         else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1)
         {
             EndDialogue();
+        }
+    }
+     void FixedUpdate()
+    {
+        if(is_waving){
+             animator.SetBool("iswaving",true);
+
+        }else{
+             animator.SetBool("iswaving",false);
         }
     }
 
