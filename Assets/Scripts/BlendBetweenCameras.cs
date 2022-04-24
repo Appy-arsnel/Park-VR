@@ -8,8 +8,9 @@ public class BlendBetweenCameras : MonoBehaviour
 {
     public DialogueManager dm;
     public Animator anim;
-    public bool FPOVCamera = true;
+    public bool FPOVCamera = false;
     public bool TPPCamera = true;
+    public float timer1;
 
     // Update is called once per frame
     void Update()
@@ -29,21 +30,22 @@ public class BlendBetweenCameras : MonoBehaviour
         if (dm.i == 1)
         {
             anim.Play("FlowerBox");
-            Cursor.lockState = CursorLockMode.Locked;
             StartCoroutine(HideDialogBox());
             StartCoroutine(BackToGuide());
             StartCoroutine(ShowDialogBox());
-
+            timer1 = 7f;
         } else if(dm.i == 2)
         {
             anim.Play("PlayGround");
             StartCoroutine(HideDialogBox());
-            StartCoroutine(BackToGuide());
-            StartCoroutine(ShowDialogBox());
+            StartCoroutine(BackToGuideFromPG());
+            StartCoroutine(ShowDialogBoxPG());
+            timer1 = 8f;
         } else
         {
             anim.Play("FPOV");
         }
+        FPOVCamera = !FPOVCamera;
     }
 
     private void SwitchPOV()
@@ -67,7 +69,7 @@ public class BlendBetweenCameras : MonoBehaviour
     IEnumerator BackToGuide()
     {
         yield return new WaitForSeconds(5f);
-        FPOVCamera = false;
+        //FPOVCamera = false;
         anim.Play("FPOV");
     }
 
@@ -75,6 +77,18 @@ public class BlendBetweenCameras : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         dm.dialogueUI.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
+    }
+
+    IEnumerator BackToGuideFromPG()
+    {
+        yield return new WaitForSeconds(6f);
+        //FPOVCamera = false;
+        anim.Play("FPOV");
+    }
+
+    IEnumerator ShowDialogBoxPG()
+    {
+        yield return new WaitForSeconds(8f);
+        dm.dialogueUI.SetActive(true);
     }
 }

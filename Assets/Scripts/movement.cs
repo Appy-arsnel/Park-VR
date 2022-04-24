@@ -16,6 +16,7 @@ public class movement : MonoBehaviour
         bool istpp;
           //[SerializeField] private GameObject _tppc;
                     [SerializeField] private GameObject _fppc;
+    public DialogueManager dm;
 
     public bool canmove;
     private int n;
@@ -69,19 +70,23 @@ public class movement : MonoBehaviour
         _charController.Move(movement * Time.deltaTime * _speed);
 
        }
-        
-       
-        //Get Mouse position Input
-        float mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity; //changed this line.
-        float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity; //changed this line.
-          //Rotate the camera based on the Y input of the mouse
-          xRotation -= mouseY;
-          //clamp the camera rotation between 80 and -70 degrees
-          xRotation = Mathf.Clamp(xRotation, _minCameraview, _maxCameraview);
 
-          _camera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-          //Rotate the player based on the X input of the mouse
-          transform.Rotate(Vector3.up * mouseX * 3);
+
+        //Get Mouse position Input
+        if (!dm.isTalking)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity; //changed this line.
+            float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity; //changed this line.
+                                                                         //Rotate the camera based on the Y input of the mouse
+            xRotation -= mouseY;
+            //clamp the camera rotation between 80 and -70 degrees
+            xRotation = Mathf.Clamp(xRotation, _minCameraview, _maxCameraview);
+
+            _camera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+            //Rotate the player based on the X input of the mouse
+            transform.Rotate(Vector3.up * mouseX * 3);
+        }
+        
             
             moveVector = Vector3.zero;
  

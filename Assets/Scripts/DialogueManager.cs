@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour
 {
     public NPC npc;
 
-    bool isTalking = false;
+    public bool isTalking = false;
 
     float distance;
 
@@ -42,7 +42,16 @@ public class DialogueManager : MonoBehaviour
         if (rc.isGuide)
         {
             Convo();
-        }  
+        }
+
+        if (blendBC.timer1 > 0f)
+        {
+            blendBC.timer1 -= Time.deltaTime;
+        }
+        if(blendBC.timer1 < 0f)
+        {
+            blendBC.timer1 = 0f;
+        }
     }
 
     void StartConversation()
@@ -84,18 +93,21 @@ public class DialogueManager : MonoBehaviour
            StartCoroutine(waving_waiter());
         }
 
+        if(blendBC.timer1 == 0f)
+        {
+            if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i < npc.dialogue.Length - 1)
+            {
+                i++;
+                npcDialogueBox.text = npc.dialogue[i];
+                blendBC.FPOVCamera = true;
 
-        if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i < npc.dialogue.Length - 1)
-        {
-            i++;
-            npcDialogueBox.text = npc.dialogue[i];
-            blendBC.FPOVCamera = true;
-            
+            }
+            else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1)
+            {
+                EndDialogue();
+            }
         }
-        else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1)
-        {
-            EndDialogue();
-        }
+        
     }
      void FixedUpdate()
     {
