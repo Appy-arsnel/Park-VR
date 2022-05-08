@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Cinemachine;
+//using Cinemachine;
 
 public class BlendBetweenCameras : MonoBehaviour
 {
-    public DialogueManager dm;
+    /*public DialogueManager dm;
     public Animator anim;
     public bool FPOVCamera = false;
     public bool TPPCamera = true;
@@ -90,5 +90,5 @@ public class BlendBetweenCameras : MonoBehaviour
     {
         yield return new WaitForSeconds(8f);
         dm.dialogueUI.SetActive(true);
-    }
+    }*/
 }

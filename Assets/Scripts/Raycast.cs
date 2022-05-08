@@ -9,12 +9,13 @@ public class Raycast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward), out RaycastHit hitinfo, 4f, layerMask)){
+        if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.right), out RaycastHit hitinfo, 4f, layerMask)){
             isGuide = true;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hitinfo.distance, Color.red);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * hitinfo.distance, Color.red);
         } else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 4f, Color.green);
+            isGuide = false;
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 4f, Color.green);
         }
     }
 }

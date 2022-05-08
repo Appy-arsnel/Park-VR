@@ -26,7 +26,7 @@ public class DialogueManager : MonoBehaviour
      private Animator animator;
      private bool is_waving;
 
-    public BlendBetweenCameras blendBC;
+    //public BlendBetweenCameras blendBC;
     [HideInInspector]
     public int i = 0;
 
@@ -44,14 +44,14 @@ public class DialogueManager : MonoBehaviour
             Convo();
         }
 
-        if (blendBC.timer1 > 0f)
+        /*if (blendBC.timer1 > 0f)
         {
             blendBC.timer1 -= Time.deltaTime;
         }
         if(blendBC.timer1 < 0f)
         {
             blendBC.timer1 = 0f;
-        }
+        }*/
     }
 
     void StartConversation()
@@ -93,20 +93,20 @@ public class DialogueManager : MonoBehaviour
            StartCoroutine(waving_waiter());
         }
 
-        if(blendBC.timer1 == 0f)
-        {
+        //if(blendBC.timer1 == 0f)
+        //{
             if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i < npc.dialogue.Length - 1)
             {
                 i++;
                 npcDialogueBox.text = npc.dialogue[i];
-                blendBC.FPOVCamera = true;
+                //blendBC.FPOVCamera = true;
 
             }
             else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1)
             {
                 EndDialogue();
             }
-        }
+        //}
         
     }
      void FixedUpdate()
