@@ -22,35 +22,33 @@ public class Teleport : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.T))
-        {
             if(dm.i == 1)
             {
-                if (!isThere)
+                if (!isThere && Input.GetKeyDown(KeyCode.T))
                 {
                     StartCoroutine(TeleportationToFB());
                     isThere = true;
                 }
-                else
+                else if(isThere && Input.GetKeyDown(KeyCode.T))
                 {
                     StartCoroutine(TeleportationToGD());
                     isThere = false;
                 }
             } else if(dm.i == 2)
             {
-                if (!isThere)
+                if (!isThere && Input.GetKeyDown(KeyCode.T))
                 {
                     StartCoroutine(TeleportationToPG());
                     isThere = true;
                 }
-                else
+                else if(isThere && Input.GetKeyDown(KeyCode.T))
                 {
                     StartCoroutine(TeleportationToGD());
                     isThere = false;
                 }
             }
             
-        }
+        
         
         
     }
