@@ -95,16 +95,17 @@ public class DialogueManager : MonoBehaviour
 
         if(blendBC.timer1 == 0f)
         {
-            if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i < npc.dialogue.Length - 1)
+            if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i < npc.dialogue.Length - 1 && blendBC.FPOVCamera)
             {
                 i++;
                 npcDialogueBox.text = npc.dialogue[i];
-                blendBC.FPOVCamera = true;
+                blendBC.redialog = false;
 
             }
-            else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1)
+            else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1 && blendBC.FPOVCamera)
             {
                 EndDialogue();
+                blendBC.redialog = false;
             }
         }
         

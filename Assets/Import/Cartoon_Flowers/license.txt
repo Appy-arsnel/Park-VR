@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cartoon Flowers
+* source:	https://sketchfab.com/3d-models/cartoon-flowers-b9139f9f63c04e8f8a7f80b2c92f8937
+* author:	Laura Costa (https://sketchfab.com/LauraMG)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cartoon Flowers" (https://sketchfab.com/3d-models/cartoon-flowers-b9139f9f63c04e8f8a7f80b2c92f8937) by Laura Costa (https://sketchfab.com/LauraMG) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
