@@ -14,6 +14,7 @@ public class BlendBetweenCameras : MonoBehaviour
     public float timer1;
     public GameObject Arrow;
     public bool flowerBox = false;
+    public bool test = false;
 
         void Start(){
             Arrow.SetActive(false);
@@ -29,6 +30,7 @@ public class BlendBetweenCameras : MonoBehaviour
         {
             SwitchPOV();
         }*/
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
              if (dm.i == 4 || dm.i == 2 || dm.i ==3)
@@ -75,7 +77,7 @@ public class BlendBetweenCameras : MonoBehaviour
             FPOVCamera = false;
             StartCoroutine(HideDialogBox(2f));
             StartCoroutine(ShowDialogBox(4f));
-            
+            timer1 = 4f;
          // StartCoroutine(FPOV_true());
         } 
         
@@ -84,6 +86,7 @@ public class BlendBetweenCameras : MonoBehaviour
             anim.Play("PlayGround");
             FPOVCamera = false;
             StartCoroutine(HideDialogBox(2f));
+            timer1 = 2f;
             //StartCoroutine(ShowDialogBox(4f));
         } else
         {
@@ -117,6 +120,7 @@ public class BlendBetweenCameras : MonoBehaviour
     void BackToGuide()
     {
         //yield return new WaitForSeconds(5f);
+        timer1 = 2f;
         FPOVCamera = true;
         redialog = true;
         anim.Play("FPOV");
@@ -128,6 +132,8 @@ public class BlendBetweenCameras : MonoBehaviour
         dm.dialogueUI.SetActive(true);
     }
 
+    
+    
     /*IEnumerator BackToGuideFromPG()
     {
         yield return new WaitForSeconds(6f);
