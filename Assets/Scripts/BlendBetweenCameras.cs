@@ -43,8 +43,8 @@ public class BlendBetweenCameras : MonoBehaviour
         if (dm.i == 1)
         {
             anim.Play("FlowerBox");
-           // FPOVCamera = false;
-          //  StartCoroutine(HideDialogBox());
+        //   FPOVCamera = false;
+         // StartCoroutine(FPOV_true());
         } 
         else if(dm.i==2){
                   
@@ -80,10 +80,10 @@ public class BlendBetweenCameras : MonoBehaviour
         }
         TPPCamera = !TPPCamera;
     }
-     IEnumerator FPOVSet_true()
+     IEnumerator FPOV_true()
     {
-        yield return new WaitForSeconds(2f);
-       FPOVCamera=true;
+        yield return new WaitForSeconds(1f);
+                FPOVCamera=true;
     }
     IEnumerator HideDialogBox()
     {
