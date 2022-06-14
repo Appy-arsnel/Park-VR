@@ -15,5 +15,8 @@ MonoBehaviour:
   pname: Guide
   dialogue:
   - Hi!
-  - Look Flower Box
+  - Look at these Flowers.
+  - What is the colour of flower in left?
+  - What is the colour of flower in middle?
+  - What is the colour of flower in right?
   - Look Playground

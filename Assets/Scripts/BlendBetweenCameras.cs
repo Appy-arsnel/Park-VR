@@ -12,7 +12,11 @@ public class BlendBetweenCameras : MonoBehaviour
     public bool TPPCamera = true;
     public bool redialog = false;
     public float timer1;
+    public GameObject Arrow;
 
+        void Start(){
+            Arrow.SetActive(false);
+        }
     // Update is called once per frame
     void Update()
     {
@@ -26,7 +30,7 @@ public class BlendBetweenCameras : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (dm.i == 1 || dm.i == 2)
+             if (dm.i == 4 || dm.i == 5)
             {
                 BackToGuide();
                 StartCoroutine(ShowDialogBox());
@@ -39,10 +43,22 @@ public class BlendBetweenCameras : MonoBehaviour
         if (dm.i == 1)
         {
             anim.Play("FlowerBox");
-            FPOVCamera = false;
-            StartCoroutine(HideDialogBox());
-        } else if(dm.i == 2)
-        {
+           // FPOVCamera = false;
+          //  StartCoroutine(HideDialogBox());
+        } 
+        else if(dm.i==2){
+                  
+            Arrow.SetActive(true);
+            Arrow.transform.position=new Vector3(37.5480003f,-3.18799996f,72.3980026f);
+        }
+         else if(dm.i==3){
+             Arrow.transform.position=new Vector3(37.5480003f,-3.18799996f,71.6660004f);
+        }
+         else if(dm.i==4){
+             Arrow.transform.position=new Vector3(37.5480003f,-3.18799996f,70.9830017f);
+        }
+        else if(dm.i == 5)
+        { Arrow.SetActive(false);
             anim.Play("PlayGround");
             FPOVCamera = false;
             StartCoroutine(HideDialogBox());
@@ -64,7 +80,11 @@ public class BlendBetweenCameras : MonoBehaviour
         }
         TPPCamera = !TPPCamera;
     }
-
+     IEnumerator FPOVSet_true()
+    {
+        yield return new WaitForSeconds(2f);
+       FPOVCamera=true;
+    }
     IEnumerator HideDialogBox()
     {
         yield return new WaitForSeconds(2f);
