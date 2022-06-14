@@ -13,6 +13,7 @@ public class BlendBetweenCameras : MonoBehaviour
     public bool redialog = false;
     public float timer1;
     public GameObject Arrow;
+    public bool flowerBox = false;
 
         void Start(){
             Arrow.SetActive(false);
@@ -24,18 +25,45 @@ public class BlendBetweenCameras : MonoBehaviour
         {
             SwitchState();
         }
-        if (Input.GetKeyDown(KeyCode.T))
+        /*if (Input.GetKeyDown(KeyCode.T))
         {
             SwitchPOV();
-        }
+        }*/
         if (Input.GetKeyDown(KeyCode.F))
         {
-             if (dm.i == 4 || dm.i == 5)
+             if (dm.i == 4 || dm.i == 2 || dm.i ==3)
             {
                 BackToGuide();
-                StartCoroutine(ShowDialogBox());
+                Arrow.SetActive(false);
+                dm.i = 1;
+                dm.npcDialogueBox.text = dm.npc.dialogue[dm.i];
+                flowerBox = false;
+                StartCoroutine(HideDialogBox(0f));
+                StartCoroutine(ShowDialogBox(2f));
+            }else if (dm.i == 5)
+            {
+                BackToGuide();
+                StartCoroutine(ShowDialogBox(2f));
             }
         }
+        if (!FPOVCamera)
+        {
+            if (dm.i == 2)
+            {
+
+                Arrow.SetActive(true);
+                Arrow.transform.position = new Vector3(37.5480003f, -3.18799996f, 72.3980026f);
+            }
+            else if (dm.i == 3)
+            {
+                Arrow.transform.position = new Vector3(37.5480003f, -3.18799996f, 71.6660004f);
+            }
+            else if (dm.i == 4)
+            {
+                Arrow.transform.position = new Vector3(37.5480003f, -3.18799996f, 70.9830017f);
+            }
+        }
+        
     }
 
     private void SwitchState()
@@ -43,25 +71,20 @@ public class BlendBetweenCameras : MonoBehaviour
         if (dm.i == 1)
         {
             anim.Play("FlowerBox");
-        //   FPOVCamera = false;
+            flowerBox = true;
+            FPOVCamera = false;
+            StartCoroutine(HideDialogBox(2f));
+            StartCoroutine(ShowDialogBox(4f));
+            
          // StartCoroutine(FPOV_true());
         } 
-        else if(dm.i==2){
-                  
-            Arrow.SetActive(true);
-            Arrow.transform.position=new Vector3(37.5480003f,-3.18799996f,72.3980026f);
-        }
-         else if(dm.i==3){
-             Arrow.transform.position=new Vector3(37.5480003f,-3.18799996f,71.6660004f);
-        }
-         else if(dm.i==4){
-             Arrow.transform.position=new Vector3(37.5480003f,-3.18799996f,70.9830017f);
-        }
+        
         else if(dm.i == 5)
         { Arrow.SetActive(false);
             anim.Play("PlayGround");
             FPOVCamera = false;
-            StartCoroutine(HideDialogBox());
+            StartCoroutine(HideDialogBox(2f));
+            //StartCoroutine(ShowDialogBox(4f));
         } else
         {
             anim.Play("FPOV");
@@ -69,7 +92,7 @@ public class BlendBetweenCameras : MonoBehaviour
         //FPOVCamera = !FPOVCamera;
     }
 
-    private void SwitchPOV()
+    /*private void SwitchPOV()
     {
         if (TPPCamera)
         {
@@ -79,15 +102,15 @@ public class BlendBetweenCameras : MonoBehaviour
             anim.Play("FPOV");
         }
         TPPCamera = !TPPCamera;
-    }
+    }*/
      IEnumerator FPOV_true()
     {
         yield return new WaitForSeconds(1f);
-                FPOVCamera=true;
+        FPOVCamera=true;
     }
-    IEnumerator HideDialogBox()
+    IEnumerator HideDialogBox(float time)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(time);
         dm.dialogueUI.SetActive(false);
     }
 
@@ -99,9 +122,9 @@ public class BlendBetweenCameras : MonoBehaviour
         anim.Play("FPOV");
     }
 
-    IEnumerator ShowDialogBox()
+    IEnumerator ShowDialogBox(float time)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(time);
         dm.dialogueUI.SetActive(true);
     }
 

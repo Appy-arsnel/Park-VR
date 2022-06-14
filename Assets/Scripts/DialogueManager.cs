@@ -95,18 +95,102 @@ public class DialogueManager : MonoBehaviour
 
         if(blendBC.timer1 == 0f)
         {
-            if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i < npc.dialogue.Length - 1 && blendBC.FPOVCamera)
+            if (blendBC.FPOVCamera)
             {
-                i++;
-                npcDialogueBox.text = npc.dialogue[i];
-                blendBC.redialog = false;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (isTalking == true && i < npc.dialogue.Length - 1)
+                    {
+                        if (i == 1)
+                        {
+                            i = 5;
+                            npcDialogueBox.text = npc.dialogue[i];
+                            blendBC.redialog = false;
+                        }
+                        else
+                        {
+                            i++;
+                            npcDialogueBox.text = npc.dialogue[i];
+                            blendBC.redialog = false;
+                        }
+                    }
+                    else if (isTalking == true && i == npc.dialogue.Length - 1)
+                    {
+                        EndDialogue();
+                        blendBC.redialog = false;
+                    }
+                }
+            } else
+            {
+                if (blendBC.flowerBox)
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        if (isTalking == true && i < 4)
+                        {
+                            i++;
+                            npcDialogueBox.text = npc.dialogue[i];
+                            blendBC.redialog = false;
 
+                        }
+                        else if (isTalking == true && i == 4)
+                        {
+                            i = 2;
+                            npcDialogueBox.text = npc.dialogue[i];
+                            blendBC.redialog = false;
+                        }
+
+                    }
+                }
             }
-            else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1 && blendBC.FPOVCamera)
-            {
-                EndDialogue();
-                blendBC.redialog = false;
-            }
+                /*if(blendBC.flowerBox)
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        if (isTalking == true && i < 4)
+                        {
+                            i++;
+                            npcDialogueBox.text = npc.dialogue[i];
+                            blendBC.redialog = false;
+
+                        } else if(isTalking == true && i == 4)
+                        {
+                            i = 2;
+                            npcDialogueBox.text = npc.dialogue[i];
+                            blendBC.redialog = false;
+                        }
+                        
+                    }
+                } else
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        
+                        if (isTalking == true && i < npc.dialogue.Length - 1)
+                        {
+                            if(i == 1)
+                            {
+                                i = 5;
+                                npcDialogueBox.text = npc.dialogue[i];
+                                blendBC.redialog = false;
+                            }else
+                            {
+                                i++;
+                                npcDialogueBox.text = npc.dialogue[i];
+                                blendBC.redialog = false;
+                            }
+                            
+                        }
+                        else if (isTalking == true && i == npc.dialogue.Length - 1)
+                        {
+                            EndDialogue();
+                            blendBC.redialog = false;
+                        }
+                    }
+                }
+                
+            }*/
+            
         }
         
     }
