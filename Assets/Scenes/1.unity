@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -324,6 +324,8 @@ MonoBehaviour:
   redialog: 0
   timer1: 0
   Arrow: {fileID: 397232305}
+  flowerBox: 0
+  test: 0
 --- !u!1001 &29695851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3126,7 +3128,7 @@ GameObject:
   - component: {fileID: 397071507}
   - component: {fileID: 396268723}
   - component: {fileID: 395302515}
-  - component: {fileID: 397232308}
+  - component: {fileID: 397232309}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -3134,21 +3136,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!111 &397232308
-Animation:
+--- !u!95 &397232309
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397232307}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 039cc55deb7047e3291d2dc2444fccd9, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cea0bfc24d49f13eb158c4b19982b18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &414522655
 PrefabInstance:
   m_ObjectHideFlags: 0
