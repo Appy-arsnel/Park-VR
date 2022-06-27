@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637903848619236606
+      ticks: 637919160861840562
     m_Hash: 4229100908
   m_LockFileStatus:
     m_FilePath: F:/Park-VR/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637903848619357009
+      ticks: 637919160862065000
     m_Hash: 1548266527
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -255,6 +255,8 @@ m_PackageAssets:
         - 1.15.16
         - 1.15.17
         - 1.15.18
+        - 1.17.0
+        - 1.17.1
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -272,6 +274,8 @@ m_PackageAssets:
         - 1.15.16
         - 1.15.17
         - 1.15.18
+        - 1.17.0
+        - 1.17.1
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -377,6 +381,7 @@ m_PackageAssets:
         - 3.0.12
         - 3.0.13
         - 3.0.14
+        - 3.0.15
         compatible:
         - 1.0.2
         - 1.0.6
@@ -408,6 +413,7 @@ m_PackageAssets:
         - 3.0.12
         - 3.0.13
         - 3.0.14
+        - 3.0.15
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -482,6 +488,7 @@ m_PackageAssets:
         - 2.0.12
         - 2.0.14
         - 2.0.15
+        - 2.0.16
         compatible:
         - 1.0.2
         - 1.0.3
@@ -501,7 +508,8 @@ m_PackageAssets:
         - 2.0.12
         - 2.0.14
         - 2.0.15
-        verified: 2.0.15
+        - 2.0.16
+        verified: 2.0.16
       dependencies:
       - name: com.unity.test-framework
         version: 1.1.9
