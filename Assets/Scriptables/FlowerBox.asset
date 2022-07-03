@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7292083214e30404b931c622fe80ed20, type: 3}
   m_Name: FlowerBox
   m_EditorClassIdentifier: 
-  pname: FlowerBox
+  pname: Guide
   dialogue:
-  - This is white flower
-  - This is blue flower
-  - This is pink flower
+  - White flower
+  - Blue flower
+  - Pink flower
