@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject player;
     public GameObject dialogueUI,arrow;
-
+    public float timer;
     public Raycast rc;
 
     public Text npcName;
@@ -29,6 +29,7 @@ public class DialogueManager : MonoBehaviour
     public BlendBetweenCameras blendBC;
     [HideInInspector]
     public int i = 0;
+    private Vector3 playerPos;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,7 @@ public class DialogueManager : MonoBehaviour
             Convo();
         }
 
+        
         // if (blendBC.timer1 > 0f)
         // {
         //     blendBC.timer1 -= Time.deltaTime;
@@ -86,6 +88,7 @@ public class DialogueManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && isTalking == false)
         {
             StartConversation();
+            playerPos = player.transform.position;
           StartCoroutine(waving_waiter());
         
         }
@@ -106,6 +109,8 @@ public class DialogueManager : MonoBehaviour
                         
                         if (i == 1)
                         {   arrow.SetActive(true);
+//StartCoroutine(dialogueCanvasChange(-4.76000023f, 0.558000028f, 1.74800003f));
+                            //StartCoroutine(playerChange(36.0186005f, -3.7019546f, 71.5500031f));
                             dialogueUI.transform.localPosition= new Vector3(-4.76000023f,0.558000028f,1.74800003f);  
                             player.transform.position=new Vector3(36.0186005f,-3.7019546f,71.5500031f);
                         }
@@ -119,9 +124,23 @@ public class DialogueManager : MonoBehaviour
                         }
                          if (i == 4)
                         {
-                              dialogueUI.transform.localPosition= new Vector3(-16.1700001f,0.558000028f,2.00999999f);  
+                    arrow.transform.position = new Vector3(37.548f, -3.188f, 70.983f);
+                    //StartCoroutine(dialogueCanvasChange(-16.1700001f, 0.558000028f, 2.00999999f));
+                    //StartCoroutine(playerChange(36.0186005f, -3.7019546f, 61.9399986f));
+                    dialogueUI.transform.localPosition= new Vector3(-16.1700001f,0.558000028f,2.00999999f);  
                              player.transform.position=new Vector3(36.0186005f,-3.7019546f,61.9399986f);
                         }
+                         if(i == 5)
+                {
+                    //StartCoroutine(dialogueCanvasChange(0.08599716f, 0.5910001f, 0.6440006f));
+                    //StartCoroutine(playerChange(playerPos.x, playerPos.y, playerPos.z));
+                    dialogueUI.transform.localPosition = new Vector3(0.08599716f, 0.5910001f, 0.6440006f);
+                    player.transform.position = new Vector3(playerPos.x, playerPos.y, playerPos.z);
+                }
+                if (i == 6)
+                {
+                    StartCoroutine(waving_waiter());
+                }
                             ++i;
                             npcDialogueBox.text = npc.dialogue[i];
                            
@@ -129,9 +148,12 @@ public class DialogueManager : MonoBehaviour
                           else if (isTalking == true && i == npc.dialogue.Length - 1)
                     {
                           arrow.SetActive(false);
-                             EndDialogue();
-                      
-                    }
+                          EndDialogue();
+                       
+                        
+                        
+
+            }
                     }
                   
                 
@@ -219,4 +241,15 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    IEnumerator dialogueCanvasChange(float x, float y, float z)
+    {
+        yield return new WaitForSeconds(1f);
+        dialogueUI.transform.position = new Vector3(x, y, z);
+    }
+
+    IEnumerator playerChange(float x, float y, float z)
+    {
+        yield return new WaitForSeconds(1.5f);
+        player.transform.position = new Vector3(x, y, z);
+    }
 }
