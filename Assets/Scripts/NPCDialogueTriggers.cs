@@ -14,7 +14,6 @@ public class NPCDialogueTriggers : MonoBehaviour
     private Vector3 origin;
 
     public GameObject guide;
-    public GameObject flowerBox;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,28 +27,18 @@ public class NPCDialogueTriggers : MonoBehaviour
         if(Physics.CheckSphere(origin, sphereRadius, layerMask1))
         {
             isGuide = true;
+            isFlowerBox = false;
             //Debug.Log("hit");
-        } else if (Physics.CheckSphere(origin, sphereRadius, layerMask2))
+        }
+        else if (Physics.CheckSphere(origin, sphereRadius, layerMask2))
         {
             isFlowerBox = true;
+            isGuide = false;
         }else
         {
             isGuide = false;
             isFlowerBox = false;
         }
-
-        if (isGuide)
-        {
-            guide.GetComponent<DialogueManager>().Convo();
-        } else if (isFlowerBox)
-        {
-            flowerBox.GetComponent<DialogueManager>().Convo();
-        }
-
-        /*if (isFlowerBox)
-        {
-            flowerBox.GetComponent<DialogueManager>().Convo();
-        }*/
     }
 
     private void OnDrawGizmos()

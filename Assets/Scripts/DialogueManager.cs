@@ -29,9 +29,9 @@ public class DialogueManager : MonoBehaviour
      private bool is_waving;
 
     //public BlendBetweenCameras blendBC;
-    [HideInInspector]
+    
     public int i = 0;
-    [HideInInspector]
+    
     public int j = 0;
 
     // Start is called before the first frame update
@@ -43,6 +43,10 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
+        if (dt.isGuide || dt.isFlowerBox)
+        {
+            Convo();
+        }
         /*if (dt.isGuide)
         {
             Convo();
@@ -99,13 +103,16 @@ public class DialogueManager : MonoBehaviour
                 StartCoroutine(waving_waiter());
                 i = 0;
             }
-            if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i < npc.dialogue.Length - 1)
+            if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == 0)
             {
-                i++;
+                i=1;
                 npcDialogueBox.text = npc.dialogue[i];
 
-            }
-            else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1)
+            }else if(isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == 1)
+            {
+                i = 5;
+                npcDialogueBox.text = npc.dialogue[i];
+            }else if (isTalking == true && Input.GetKeyDown(KeyCode.Space) && i == npc.dialogue.Length - 1)
             {
                 EndDialogue();
                 StartCoroutine(waving_waiter());
@@ -113,26 +120,19 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        else if (dt.isFlowerBox)
+        if (dt.isFlowerBox)
         {
-            if (Input.GetKeyDown(KeyCode.E) && isTalking == false)
+            
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                StartConversation();
-            } else if(Input.GetKeyDown(KeyCode.E) && isTalking == true)
-            {
-                EndDialogue();
-                j = 0;
-            }
-            if(isTalking == true && Input.GetKeyDown(KeyCode.Space))
-            {
-                if (j < npc.dialogue.Length - 1)
+                if (isTalking == true && i < 4)
                 {
-                    j++;
-                    npcDialogueBox.text = npc.dialogue[j];
-                } else if(j == npc.dialogue.Length - 1)
+                    i++;
+                    npcDialogueBox.text = npc.dialogue[i];
+                } else if(isTalking == true && i == 4)
                 {
-                    j = 0;
-                    npcDialogueBox.text = npc.dialogue[j];
+                    i = 2;
+                    npcDialogueBox.text = npc.dialogue[i];
                 }
             }
         }
