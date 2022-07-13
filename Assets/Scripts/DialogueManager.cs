@@ -13,10 +13,11 @@ public class DialogueManager : MonoBehaviour
 
     float distance;
 
-    public GameObject player;
+    public GameObject player,fpp,tpp;
     public GameObject dialogueUI;
 
     public Raycast rc;
+   
 
     public Text npcName;
         
@@ -35,6 +36,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueUI.SetActive(false);
         animator= GetComponent<Animator>();
+        
     }
 
     void Update()
@@ -55,7 +57,8 @@ public class DialogueManager : MonoBehaviour
     }
 
     void StartConversation()
-    {
+    {   fpp.SetActive(true);
+        tpp.SetActive(false);
         isTalking = true;
         dialogueUI.SetActive(true);
         npcName.text = npc.name;
@@ -67,6 +70,8 @@ public class DialogueManager : MonoBehaviour
         isTalking = false;
         dialogueUI.SetActive(false);
         i = 0;
+       tpp.SetActive(true);
+       fpp.SetActive(false);
     }
    IEnumerator waving_waiter()
 {     

@@ -15,7 +15,7 @@ public class movement : MonoBehaviour
         private Camera _camera =null;
         bool istpp;
           //[SerializeField] private GameObject _tppc;
-                    [SerializeField] private GameObject _fppc;
+                    [SerializeField] private GameObject _fppc,cinebitch;
     public DialogueManager dm;
 
     public bool canmove;
@@ -81,6 +81,7 @@ public class movement : MonoBehaviour
             xRotation -= mouseY;
             //clamp the camera rotation between 80 and -70 degrees
             xRotation = Mathf.Clamp(xRotation, _minCameraview, _maxCameraview);
+            
 
             _camera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
             //Rotate the player based on the X input of the mouse

@@ -33,7 +33,7 @@ public class BlendBetweenCameras : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.F))
         {
-             if (dm.i == 4 || dm.i == 2 || dm.i ==3)
+             if (dm.i==1 || dm.i == 4 || dm.i == 2 || dm.i ==3)
             {
                 BackToGuide();
                 Arrow.SetActive(false);
