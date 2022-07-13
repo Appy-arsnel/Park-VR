@@ -124,6 +124,11 @@ public class DialogueManager : MonoBehaviour
                         EndDialogue();
                         blendBC.redialog = false;
                     }
+                    
+                    if (isTalking == true && i == 6)
+                    {
+                        StartCoroutine(waving_waiter());
+                    }
                 }
             } else
             {
