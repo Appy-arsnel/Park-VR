@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -23,10 +24,10 @@ public class movement : MonoBehaviour
     private bool iswaving;
     private float xRotation = 0f;
          Vector3 moveVector;
-         private bool iswalking;
+         private bool iswalking,is_movingToNpc,is_movingToFlower,is_movingToPlayground;
  private Animator animator;
   float vertical,horizontal;
-
+  [SerializeField] private GameObject[] walkpositions,lookAtWhileWalk;
     // Start is called before the first frame update
     void Start()
     {       canmove=true;
@@ -45,6 +46,7 @@ public class movement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         animator= GetComponent<Animator>();
         iswalking=false;
+        is_movingToNpc=is_movingToFlower=is_movingToPlayground=false;
     }
     IEnumerator waiter()
 {       canmove=false;
@@ -60,8 +62,27 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Alpha1)){
+        is_movingToNpc=true;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2)){
+        is_movingToFlower=true;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3)){
+        is_movingToPlayground=true;
+        }
+        
+
+        if(is_movingToNpc)
+        Move_Towards_NPC(0,lookAtWhileWalk[0]);
+        if(is_movingToFlower)
+        Move_Towards_NPC(1,lookAtWhileWalk[1]);
+        if(is_movingToPlayground)
+        Move_Towards_NPC(2,lookAtWhileWalk[2]);
+
         //Get WASD Input for Player
        // _camera.SetActive(true);
+
        if(canmove){
              vertical = Input.GetAxis("Vertical");
          horizontal = Input.GetAxis("Horizontal");
@@ -70,7 +91,6 @@ public class movement : MonoBehaviour
         _charController.Move(movement * Time.deltaTime * _speed);
 
        }
-
 
         //Get Mouse position Input
         if (!dm.isTalking)
@@ -136,7 +156,22 @@ public class movement : MonoBehaviour
              
         
         }
-          void FixedUpdate() {
+
+    private void Move_Towards_NPC(int i,GameObject obj)
+    {
+        var offset =walkpositions[i].transform.position-this.transform.position;
+       
+        if(offset.magnitude<=0.2){
+
+            is_movingToNpc=false;
+            Debug.Log("false ho gaya");
+        }
+        offset=offset.normalized*_speed;
+        _charController.Move(offset*Time.deltaTime);
+        this.transform.LookAt(obj.transform);
+    }
+
+    void FixedUpdate() {
              // _camera.SetActive(true);
                if(vertical>0||vertical<0||horizontal>0||horizontal<0){
                          animator.SetBool("isWalking",true);

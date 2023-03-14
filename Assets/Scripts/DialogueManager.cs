@@ -36,6 +36,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueUI.SetActive(false);
         animator= GetComponent<Animator>();
+        isTalking=false;    
         
     }
 
