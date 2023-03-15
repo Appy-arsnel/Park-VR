@@ -24,7 +24,7 @@ public class movement : MonoBehaviour
     private bool iswaving;
     private float xRotation = 0f;
          Vector3 moveVector;
-         private bool iswalking,is_movingToNpc,is_movingToFlower,is_movingToPlayground;
+         private bool iswalking,is_movingToNpc,is_movingToFlower,is_movingToPlayground,is_movingTOSwing,is_movingTOSlide;
  private Animator animator;
   float vertical,horizontal;
   [SerializeField] private GameObject[] walkpositions,lookAtWhileWalk;
@@ -46,7 +46,7 @@ public class movement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         animator= GetComponent<Animator>();
         iswalking=false;
-        is_movingToNpc=is_movingToFlower=is_movingToPlayground=false;
+        is_movingToNpc=is_movingToFlower=is_movingToPlayground=is_movingTOSwing=is_movingTOSlide=false;
     }
     IEnumerator waiter()
 {       canmove=false;
@@ -63,16 +63,24 @@ public class movement : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)){
-        if(is_movingToFlower==false&&is_movingToPlayground==false)
+        if(is_movingToFlower==false&&is_movingToPlayground==false&&is_movingTOSwing==false&&is_movingTOSlide==false)
         is_movingToNpc=true;
         }
         if(Input.GetKeyDown(KeyCode.Alpha2)){
-        if(is_movingToNpc==false&&is_movingToPlayground==false)
+        if(is_movingToNpc==false&&is_movingToPlayground==false&&is_movingTOSwing==false&&is_movingTOSlide==false)
         is_movingToFlower=true;
         }
         if(Input.GetKeyDown(KeyCode.Alpha3)){
-        if(is_movingToFlower==false&&is_movingToNpc==false)
+        if(is_movingToFlower==false&&is_movingToNpc==false&&is_movingTOSwing==false&&is_movingTOSlide==false)
         is_movingToPlayground=true;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha4)){
+        if(is_movingToFlower==false&&is_movingToNpc==false&&is_movingTOSwing==false&&is_movingToPlayground==false)
+        is_movingTOSlide=true;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha5)){
+        if(is_movingToFlower==false&&is_movingToNpc==false&&is_movingToPlayground==false&&is_movingTOSlide==false)
+        is_movingTOSwing=true;
         }
         
 
@@ -82,6 +90,11 @@ public class movement : MonoBehaviour
         Move_Towards_NPC(1,lookAtWhileWalk[1],ref is_movingToFlower);
         if(is_movingToPlayground)
         Move_Towards_NPC(2,lookAtWhileWalk[2],ref is_movingToPlayground);
+        if(is_movingTOSlide)
+        Move_Towards_NPC(3,lookAtWhileWalk[3],ref is_movingTOSlide);
+        if(is_movingTOSwing)
+        Move_Towards_NPC(4,lookAtWhileWalk[4],ref is_movingTOSwing);
+        
 
         //Get WASD Input for Player
        // _camera.SetActive(true);

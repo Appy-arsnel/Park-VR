@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
     public Text npcName;
         
     public Text npcDialogueBox;
-
+    public movement movem;
 //npc animations
      private Animator animator;
      private bool is_waving;
@@ -56,6 +56,10 @@ public class DialogueManager : MonoBehaviour
         {
             blendBC.timer1 = 0f;
         }
+        if(isTalking)
+        movem.canmove=false;
+        else
+        movem.canmove=true;
     }
 
     void StartConversation()
@@ -153,6 +157,9 @@ public class DialogueManager : MonoBehaviour
                         }
 
                     }
+                }
+                else{
+                    
                 }
             }
                 /*if(blendBC.flowerBox)
