@@ -63,22 +63,25 @@ public class movement : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)){
+        if(is_movingToFlower==false&&is_movingToPlayground==false)
         is_movingToNpc=true;
         }
         if(Input.GetKeyDown(KeyCode.Alpha2)){
+        if(is_movingToNpc==false&&is_movingToPlayground==false)
         is_movingToFlower=true;
         }
         if(Input.GetKeyDown(KeyCode.Alpha3)){
+        if(is_movingToFlower==false&&is_movingToNpc==false)
         is_movingToPlayground=true;
         }
         
 
         if(is_movingToNpc)
-        Move_Towards_NPC(0,lookAtWhileWalk[0]);
+        Move_Towards_NPC(0,lookAtWhileWalk[0],ref is_movingToNpc);
         if(is_movingToFlower)
-        Move_Towards_NPC(1,lookAtWhileWalk[1]);
+        Move_Towards_NPC(1,lookAtWhileWalk[1],ref is_movingToFlower);
         if(is_movingToPlayground)
-        Move_Towards_NPC(2,lookAtWhileWalk[2]);
+        Move_Towards_NPC(2,lookAtWhileWalk[2],ref is_movingToPlayground);
 
         //Get WASD Input for Player
        // _camera.SetActive(true);
@@ -157,13 +160,13 @@ public class movement : MonoBehaviour
         
         }
 
-    private void Move_Towards_NPC(int i,GameObject obj)
+    private void Move_Towards_NPC(int i,GameObject obj, ref bool isMove)
     {
         var offset =walkpositions[i].transform.position-this.transform.position;
        
         if(offset.magnitude<=0.2){
 
-            is_movingToNpc=false;
+            isMove=false;
             Debug.Log("false ho gaya");
         }
         offset=offset.normalized*_speed;

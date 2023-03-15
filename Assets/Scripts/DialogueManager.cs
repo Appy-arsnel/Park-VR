@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
+            
         if (rc.isGuide)
         {
             Convo();
