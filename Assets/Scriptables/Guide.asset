@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7292083214e30404b931c622fe80ed20, type: 3}
   m_Name: Guide
   m_EditorClassIdentifier: 
-  pname: Amit
+  pname: Manvi
   dialogue:
   - Hi!
+  - I am Amit.
+  - What is your name?
   - Look at these Flowers.
   - White Flowers
   - Blue Flowers

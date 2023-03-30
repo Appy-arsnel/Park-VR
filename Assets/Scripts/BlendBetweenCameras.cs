@@ -32,17 +32,18 @@ public class BlendBetweenCameras : MonoBehaviour
         }*/
         
         if (Input.GetKeyDown(KeyCode.F))
-        {
-             if (dm.i==1 || dm.i == 4 || dm.i == 2 || dm.i ==3)
+        {       //camera wapas npc
+    
+             if (dm.i==3 || dm.i == 4 || dm.i == 6|| dm.i ==5)
             {
                 BackToGuide();
                 Arrow.SetActive(false);
-                dm.i = 1;
+                dm.i = 3;
                 dm.npcDialogueBox.text = dm.npc.dialogue[dm.i];
                 flowerBox = false;
                 StartCoroutine(HideDialogBox(0f));
                 StartCoroutine(ShowDialogBox(2f));
-            }else if (dm.i == 5)
+            }else if (dm.i == 7)
             {
                 BackToGuide();
                 StartCoroutine(ShowDialogBox(2f));
@@ -50,17 +51,17 @@ public class BlendBetweenCameras : MonoBehaviour
         }
         if (!FPOVCamera)
         {
-            if (dm.i == 2)
+            if (dm.i == 4)
             {
 
                 Arrow.SetActive(true);
                 Arrow.transform.position = new Vector3(37.5480003f, -3.18799996f, 72.3980026f);
             }
-            else if (dm.i == 3)
+            else if (dm.i == 5)
             {
                 Arrow.transform.position = new Vector3(37.5480003f, -3.18799996f, 71.6660004f);
             }
-            else if (dm.i == 4)
+            else if (dm.i == 6)
             {
                 Arrow.transform.position = new Vector3(37.5480003f, -3.18799996f, 70.9830017f);
             }
@@ -70,7 +71,7 @@ public class BlendBetweenCameras : MonoBehaviour
 
     private void SwitchState()
     {
-        if (dm.i == 1)
+        if (dm.i == 3)
         {
             anim.Play("FlowerBox");
             flowerBox = true;
@@ -81,7 +82,7 @@ public class BlendBetweenCameras : MonoBehaviour
          // StartCoroutine(FPOV_true());
         } 
         
-        else if(dm.i == 5)
+        else if(dm.i == 7&&!flowerBox)
         { Arrow.SetActive(false);
             anim.Play("PlayGround");
             FPOVCamera = false;

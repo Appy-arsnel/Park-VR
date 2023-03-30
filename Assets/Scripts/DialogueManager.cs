@@ -112,9 +112,9 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (isTalking == true && i < npc.dialogue.Length - 1)
                     {
-                        if (i == 1)
+                        if (i == 3)
                         {
-                            i = 5;
+                            i = 7;
                             npcDialogueBox.text = npc.dialogue[i];
                             blendBC.redialog = false;
                         }
@@ -131,9 +131,9 @@ public class DialogueManager : MonoBehaviour
                         blendBC.redialog = false;
                     }
                     
-                    if (isTalking == true && i == 6)
+                    if (isTalking == true && i == 7)
                     {
-                        StartCoroutine(waving_waiter());
+                       // StartCoroutine(waving_waiter());
                     }
                 }
             } else
@@ -142,16 +142,16 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        if (isTalking == true && i < 4)
+                        if (isTalking == true && i < 6)
                         {
                             i++;
                             npcDialogueBox.text = npc.dialogue[i];
                             blendBC.redialog = false;
 
                         }
-                        else if (isTalking == true && i == 4)
+                        else if (isTalking == true && i == 6)
                         {
-                            i = 2;
+                            i = 4;
                             npcDialogueBox.text = npc.dialogue[i];
                             blendBC.redialog = false;
                         }
@@ -159,7 +159,8 @@ public class DialogueManager : MonoBehaviour
                     }
                 }
                 else{
-                    
+                                            //blendBC.redialog = false;
+
                 }
             }
                 /*if(blendBC.flowerBox)
